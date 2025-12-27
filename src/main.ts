@@ -119,6 +119,8 @@ async function createWindow() {
         return enableTransparentThemes;
     });
 
+    ipcMain.handle('get-native-window-handle', () => mainWindow.getNativeWindowHandle());
+
     // Opens links in external browser instead of opening them in the Electron app.
     mainWindow.webContents.setWindowOpenHandler((edata:any) => {
         shell.openExternal(edata.url);
